@@ -99,7 +99,7 @@ void cl()
   
   if(!found)
   {
-  std::cout<<in<<" is invalid or unknown. See 'help' for avaiable commands"<<std::endl;
+  std::cout<<in<<" is invalid or unknown. See 'help' for avaiable commands, or take a look at help.html that should come with the installation."<<std::endl;
   cl();
 }
   
