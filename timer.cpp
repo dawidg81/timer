@@ -3,14 +3,20 @@
 #include <string>
 #include <chrono>
 #include <thread>
+
 int h;
 int m;
 int s;
-void cl() {
+
+void cl()
+{
   std::string in;
   std::cin>>in;
+  
   std::string cmds[6] = {"help", "exit", "about", "set", "see", "start"};
-  if(in=="help"){
+  
+  if(in=="help")
+  {
   std::cout<<"List of avaiable commands:"<<std::endl<<std::endl;
   std::cout<<"help - shows list of avaiable commands"<<std::endl;
   std::cout<<"exit - exits the program"<<std::endl;
@@ -20,14 +26,20 @@ void cl() {
   std::cout<<"start - start the timer"<<std::endl;
   cl();
   }
-  if(in=="exit"){
+  
+  if(in=="exit")
+  {
     std::cout<<"The program is now exiting!"<<std::endl;
   }
-  if(in=="about"){
+  
+  if(in=="about")
+  {
     std::cout<<"Software name: Timer -  author: dawidg81 - last build: 2025-05-25-7:30PM - version: 0-1"<<std::endl;
     cl();
   }
-  if(in=="set"){
+  
+  if(in=="set")
+  {
     std::cout<<"Hours: ";
     std::cin>>h;
     std::cout<<"Minutes: ";
@@ -36,25 +48,34 @@ void cl() {
     std::cin>>s;
     cl();
   }
-  if(in=="see"){
+  
+  if(in=="see")
+  {
     std::cout<<"Hours: "<<h<<" Minutes: "<<m<<" Seconds: "<<s<<std::endl;
     cl();
   }
-  if(in=="start"){
-    while(h > 0 || m > 0 || s > 0){
+  
+  if(in=="start")
+  {
+    while(h > 0 || m > 0 || s > 0)
+    {
       std::cout
         << (h < 10 ? "0" : "") << h << ":"
         << (m < 10 ? "0" : "") << m << ":"
         << (s < 10 ? "0" : "") << s << "\r"<<std::flush;
         std::this_thread::sleep_for(std::chrono::seconds(1));
-        if(s > 0){
+      
+        if(s > 0)
+        {
           s--;
         } else {
-          if(m > 0){
+          if(m > 0)
+          {
             m--;
             s = 59;
             } else {
-              if(h > 0){
+              if(h > 0)
+              {
                 h--;
                 m = 59;
                 s = 59;
@@ -66,17 +87,24 @@ void cl() {
         cl();
       }
   bool found=false;
-  for(const auto& cmd : cmds){
-    if(in==cmd){
+  
+  for(const auto& cmd : cmds)
+  {
+    if(in==cmd)
+    {
       found = true;
       break;
     }
   }
-  if(!found){
+  
+  if(!found)
+  {
   std::cout<<in<<" is invalid or unknown. See 'help' for avaiable commands"<<std::endl;
   cl();
 }
+  
 }
+
 int main() {
   cl();
   return 0;
